@@ -3,7 +3,9 @@ addr: :8080
 name: todolist
 url: http://127.0.0.1:8080
 max_ping_count: 10
-jwt_secret: Rtg8BPKtodOlIstWNLiBackEnDRgq0iBb5FIFV
+jwt:
+  secret: Rtg8BPKtodOlIstWNLiBackEnDRgq0iBb5FIFV
+  expired: 100
 log:
   writers: file,stdout
   logger_level: DEBUG
@@ -18,3 +20,6 @@ db:
   addr: 0.0.0.0:3306
   username: root
   password: root
+qq:
+  app_id: sadf
+  app_secret: sadfsa
