@@ -5,9 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"regexp"
 	"time"
-
-	"go.uber.org/zap"
 
 	"todolist_backend/handler"
 	"todolist_backend/log"
@@ -15,6 +14,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/willf/pad"
+	"go.uber.org/zap"
 )
 
 type bodyLogWriter struct {
@@ -35,6 +35,11 @@ func Logging() gin.HandlerFunc {
 
 		// Skip for the health check requests.
 		if path == "/sd/health" || path == "/sd/ram" || path == "/sd/cpu" || path == "/sd/disk" {
+			return
+		}
+
+		reg := regexp.MustCompile("swagger")
+		if reg.MatchString(path) {
 			return
 		}
 

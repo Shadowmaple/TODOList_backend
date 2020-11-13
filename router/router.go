@@ -9,6 +9,8 @@ import (
 	"todolist_backend/router/middleware"
 
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 // Load loads the middlewares, routes, handlers.
@@ -24,12 +26,10 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		c.String(http.StatusNotFound, "The incorrect API route.")
 	})
 
-	// api for authentication functionalities
-	g.POST("/login", user.Login)
+	g.POST("/api/v1/login", user.Login)
 
 	u := g.Group("/api/v1/user")
 	{
-		u.POST("/login", user.Login)
 		u.GET("", user.Get)
 		u.PUT("", user.Update)
 	}
@@ -43,6 +43,9 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		matterRouter.DELETE("/:id", matter.Delete)
 		matterRouter.PUT("/:id/finish", matter.Finish)
 	}
+
+	// swagger
+	g.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	// The health check handlers
 	svcd := g.Group("/sd")

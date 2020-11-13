@@ -22,6 +22,10 @@ var (
 	cfg = pflag.StringP("config", "c", "", "apiserver config file path.")
 )
 
+// @title todo-list
+// @version 1.0
+// @host ...
+// @BasePath /api/v1
 func main() {
 	pflag.Parse()
 

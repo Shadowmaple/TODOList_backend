@@ -13,6 +13,7 @@ type GetResponse struct {
 // Get gets an user by the user identifier.
 // @Summery 获取用户信息
 // @Tags user
+// @Param Authorization header string true "token"
 // @Success 200 {object} user.GetResponse
 // @Router /user [get]
 func Get(c *gin.Context) {

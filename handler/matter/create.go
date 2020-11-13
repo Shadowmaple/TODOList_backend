@@ -6,6 +6,12 @@ type CreateRequest struct {
 	MatterInfo
 }
 
+// @Summery 创建事项
+// @Tags matter
+// @Param Authorization header string true "token"
+// @param data body matter.CreateRequest true "body data"
+// @Success 200 "OK"
+// @Router /matter [post]
 func Create(c *gin.Context) {
 
 }
