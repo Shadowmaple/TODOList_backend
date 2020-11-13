@@ -10,6 +10,9 @@ definitions:
       priority:
         description: 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
         type: integer
+      state:
+        description: 状态：0/1/2 => 未完成/已完成/已过期
+        type: integer
       time:
         description: 设定的时间："12:02"
         type: string
@@ -31,6 +34,9 @@ definitions:
         type: string
       priority:
         description: 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
+        type: integer
+      state:
+        description: 状态：0/1/2 => 未完成/已完成/已过期
         type: integer
       time:
         description: 设定的时间："12:02"
@@ -57,6 +63,9 @@ definitions:
       priority:
         description: 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
         type: integer
+      state:
+        description: 状态：0/1/2 => 未完成/已完成/已过期
+        type: integer
       time:
         description: 设定的时间："12:02"
         type: string
@@ -72,6 +81,9 @@ definitions:
         type: string
       priority:
         description: 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
+        type: integer
+      state:
+        description: 状态：0/1/2 => 未完成/已完成/已过期
         type: integer
       time:
         description: 设定的时间："12:02"
@@ -124,6 +136,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/matter.ListResponse'
+      summary: 获取所有事项
       tags:
       - matter
     post:
@@ -143,6 +156,7 @@ paths:
       responses:
         "200":
           description: OK
+      summary: 创建事项
       tags:
       - matter
   /matter/{id}:
@@ -161,6 +175,7 @@ paths:
       responses:
         "200":
           description: OK
+      summary: 删除事项
       tags:
       - matter
     get:
@@ -180,6 +195,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/matter.GetResponse'
+      summary: 查看事项详情
       tags:
       - matter
     put:
@@ -204,6 +220,7 @@ paths:
       responses:
         "200":
           description: OK
+      summary: 修改事项
       tags:
       - matter
   /matter/{id}/finish:
@@ -231,6 +248,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/matter.FinishPayload'
+      summary: 完成/取消完成事项
       tags:
       - matter
   /user:
@@ -246,6 +264,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/user.GetResponse'
+      summary: 获取用户信息
       tags:
       - user
   /user/login:
@@ -263,6 +282,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/user.LoginResponse'
+      summary: 登录
       tags:
       - user
 swagger: "2.0"

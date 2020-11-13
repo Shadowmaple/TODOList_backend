@@ -6,7 +6,7 @@ type FinishPayload struct {
 	State bool `json:"state"` // 是否完成
 }
 
-// @Summery 完成/取消完成事项
+// @Summary 完成/取消完成事项
 // @Tags matter
 // @Param Authorization header string true "token"
 // @param id path string true "matter id"

@@ -3,6 +3,7 @@ package router
 import (
 	"net/http"
 
+	_ "todolist_backend/docs"
 	"todolist_backend/handler/matter"
 	"todolist_backend/handler/sd"
 	"todolist_backend/handler/user"

@@ -12,7 +12,7 @@ type LoginResponse struct {
 	Token string `json:"token"`
 }
 
-// @Summery 登录
+// @Summary 登录
 // @Tags user
 // @Param data body user.LoginRequest true "body data"
 // @Success 200 {object} user.LoginResponse

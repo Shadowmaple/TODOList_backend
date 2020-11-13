@@ -8,7 +8,7 @@ type UpdateRequest struct {
 	Nickname string `json:"nickname"`
 }
 
-// @Summery 修改用户信息
+// @Summary 修改用户信息
 // @Tags user
 // @Param Authorization header string true "token"
 // @param data body user.UpdateRequest true "body data"

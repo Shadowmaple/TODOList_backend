@@ -14,6 +14,7 @@
                 "tags": [
                     "matter"
                 ],
+                "summary": "获取所有事项",
                 "parameters": [
                     {
                         "type": "string",
@@ -36,6 +37,7 @@
                 "tags": [
                     "matter"
                 ],
+                "summary": "创建事项",
                 "parameters": [
                     {
                         "type": "string",
@@ -67,6 +69,7 @@
                 "tags": [
                     "matter"
                 ],
+                "summary": "查看事项详情",
                 "parameters": [
                     {
                         "type": "string",
@@ -96,6 +99,7 @@
                 "tags": [
                     "matter"
                 ],
+                "summary": "修改事项",
                 "parameters": [
                     {
                         "type": "string",
@@ -132,6 +136,7 @@
                 "tags": [
                     "matter"
                 ],
+                "summary": "删除事项",
                 "parameters": [
                     {
                         "type": "string",
@@ -160,6 +165,7 @@
                 "tags": [
                     "matter"
                 ],
+                "summary": "完成/取消完成事项",
                 "parameters": [
                     {
                         "type": "string",
@@ -201,6 +207,7 @@
                 "tags": [
                     "user"
                 ],
+                "summary": "获取用户信息",
                 "parameters": [
                     {
                         "type": "string",
@@ -225,6 +232,7 @@
                 "tags": [
                     "user"
                 ],
+                "summary": "登录",
                 "parameters": [
                     {
                         "description": "body data",
@@ -263,6 +271,10 @@
                     "description": "优先级，0/1/2/3 =\u003e 无优先级/低优先级/中优先级/高优先级",
                     "type": "integer"
                 },
+                "state": {
+                    "description": "状态：0/1/2 =\u003e 未完成/已完成/已过期",
+                    "type": "integer"
+                },
                 "time": {
                     "description": "设定的时间：\"12:02\"",
                     "type": "string"
@@ -293,6 +305,10 @@
                 },
                 "priority": {
                     "description": "优先级，0/1/2/3 =\u003e 无优先级/低优先级/中优先级/高优先级",
+                    "type": "integer"
+                },
+                "state": {
+                    "description": "状态：0/1/2 =\u003e 未完成/已完成/已过期",
                     "type": "integer"
                 },
                 "time": {
@@ -332,6 +348,10 @@
                     "description": "优先级，0/1/2/3 =\u003e 无优先级/低优先级/中优先级/高优先级",
                     "type": "integer"
                 },
+                "state": {
+                    "description": "状态：0/1/2 =\u003e 未完成/已完成/已过期",
+                    "type": "integer"
+                },
                 "time": {
                     "description": "设定的时间：\"12:02\"",
                     "type": "string"
@@ -353,6 +373,10 @@
                 },
                 "priority": {
                     "description": "优先级，0/1/2/3 =\u003e 无优先级/低优先级/中优先级/高优先级",
+                    "type": "integer"
+                },
+                "state": {
+                    "description": "状态：0/1/2 =\u003e 未完成/已完成/已过期",
                     "type": "integer"
                 },
                 "time": {

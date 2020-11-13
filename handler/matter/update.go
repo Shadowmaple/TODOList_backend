@@ -6,7 +6,7 @@ type UpdateRequest struct {
 	MatterInfo
 }
 
-// @Summery 修改事项
+// @Summary 修改事项
 // @Tags matter
 // @Param Authorization header string true "token"
 // @param id path string true "matter id"

@@ -7,7 +7,7 @@ type ListResponse struct {
 	List  []*MatterInfo `json:"list"`
 }
 
-// @Summery 获取所以事项
+// @Summary 获取所有事项
 // @Tags matter
 // @Param Authorization header string true "token"
 // @Success 200 {object} matter.ListResponse

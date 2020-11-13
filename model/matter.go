@@ -3,14 +3,15 @@ package model
 import "time"
 
 type MatterModel struct {
-	ID        uint32    `json:"id"`
-	Title     string    `json:"title"`
-	Content   string    `json:"content"`
-	Priority  int8      `json:"priority"`   // 优先级
-	Date      string    `json:"date"`       // 设定的日期：2020-11-01
-	Time      string    `json:"time"`       // 设定的时间：12:20
-	CreatedAt time.Time `json:"created_at"` // 创建时间
-	UserID    uint32    `json:"user_id"`
+	ID        uint32    `json:"id" gorm:"column:id"`
+	Title     string    `json:"title" gorm:"column:title"`
+	Content   string    `json:"content" gorm:"column:content"`
+	Priority  int8      `json:"priority" gorm:"column:priority"`     // 优先级
+	State     int8      `json:"state" gorm:"column:state"`           // 状态：0/1 => 未完成/已完成
+	Date      string    `json:"date" gorm:"column:date"`             // 设定的日期：2020-11-01
+	Time      string    `json:"time" gorm:"column:time"`             // 设定的时间：12:20
+	CreatedAt time.Time `json:"created_at" gorm:"column:created_at"` // 创建时间
+	UserID    uint32    `json:"user_id" gorm:"column:user_id"`
 }
 
 func (m *MatterModel) Create() error {

@@ -6,7 +6,7 @@ type CreateRequest struct {
 	MatterInfo
 }
 
-// @Summery 创建事项
+// @Summary 创建事项
 // @Tags matter
 // @Param Authorization header string true "token"
 // @param data body matter.CreateRequest true "body data"

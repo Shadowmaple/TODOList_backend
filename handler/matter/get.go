@@ -6,7 +6,7 @@ type GetResponse struct {
 	MatterInfo
 }
 
-// @Summery 查看事项详情
+// @Summary 查看事项详情
 // @Tags matter
 // @Param Authorization header string true "token"
 // @param id path string true "matter id"
