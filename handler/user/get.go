@@ -1,21 +1,20 @@
 package user
 
 import (
-	. "todolist_backend/handler"
-	"todolist_backend/model"
-	"todolist_backend/pkg/errno"
-
 	"github.com/gin-gonic/gin"
 )
 
+type GetResponse struct {
+	Username string `json:"username"`
+	Nickname string `json:"nickname"`
+	QQ       string `json:"qq"`
+}
+
 // Get gets an user by the user identifier.
+// @Summery 获取用户信息
+// @Tags user
+// @Success 200 {object} user.GetResponse
+// @Router /user [get]
 func Get(c *gin.Context) {
-	username := c.Param("username")
-	// Get the user by the `username` from the database.
-	user, err := model.GetUser(username)
-	if err != nil {
-		SendError(c, errno.ErrUserNotFound, nil, err.Error())
-		return
-	}
-	SendResponse(c, nil, user)
+
 }
