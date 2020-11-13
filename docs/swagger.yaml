@@ -1,0 +1,268 @@
+basePath: /api/v1
+definitions:
+  matter.CreateRequest:
+    properties:
+      content:
+        type: string
+      date:
+        description: 设定的日期：2020-11-01
+        type: string
+      priority:
+        description: 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
+        type: integer
+      time:
+        description: 设定的时间："12:02"
+        type: string
+      title:
+        type: string
+    type: object
+  matter.FinishPayload:
+    properties:
+      state:
+        description: 是否完成
+        type: boolean
+    type: object
+  matter.GetResponse:
+    properties:
+      content:
+        type: string
+      date:
+        description: 设定的日期：2020-11-01
+        type: string
+      priority:
+        description: 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
+        type: integer
+      time:
+        description: 设定的时间："12:02"
+        type: string
+      title:
+        type: string
+    type: object
+  matter.ListResponse:
+    properties:
+      count:
+        type: integer
+      list:
+        items:
+          $ref: '#/definitions/matter.MatterInfo'
+        type: array
+    type: object
+  matter.MatterInfo:
+    properties:
+      content:
+        type: string
+      date:
+        description: 设定的日期：2020-11-01
+        type: string
+      priority:
+        description: 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
+        type: integer
+      time:
+        description: 设定的时间："12:02"
+        type: string
+      title:
+        type: string
+    type: object
+  matter.UpdateRequest:
+    properties:
+      content:
+        type: string
+      date:
+        description: 设定的日期：2020-11-01
+        type: string
+      priority:
+        description: 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
+        type: integer
+      time:
+        description: 设定的时间："12:02"
+        type: string
+      title:
+        type: string
+    type: object
+  user.GetResponse:
+    properties:
+      nickname:
+        type: string
+      qq:
+        type: string
+      username:
+        type: string
+    type: object
+  user.LoginRequest:
+    properties:
+      code:
+        description: 小程序 auth code
+        type: string
+    type: object
+  user.LoginResponse:
+    properties:
+      token:
+        type: string
+    type: object
+  user.UpdateRequest:
+    properties:
+      nickname:
+        type: string
+    type: object
+host: '...'
+info:
+  contact: {}
+  license: {}
+  title: todo-list
+  version: "1.0"
+paths:
+  /matter:
+    get:
+      parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/matter.ListResponse'
+      tags:
+      - matter
+    post:
+      parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/matter.CreateRequest'
+          type: object
+      responses:
+        "200":
+          description: OK
+      tags:
+      - matter
+  /matter/{id}:
+    delete:
+      parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: matter id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+      tags:
+      - matter
+    get:
+      parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: matter id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/matter.GetResponse'
+      tags:
+      - matter
+    put:
+      parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: matter id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/matter.UpdateRequest'
+          type: object
+      responses:
+        "200":
+          description: OK
+      tags:
+      - matter
+  /matter/{id}/finish:
+    put:
+      parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: matter id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/matter.FinishPayload'
+          type: object
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/matter.FinishPayload'
+      tags:
+      - matter
+  /user:
+    get:
+      parameters:
+      - description: token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetResponse'
+      tags:
+      - user
+  /user/login:
+    post:
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/user.LoginRequest'
+          type: object
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.LoginResponse'
+      tags:
+      - user
+swagger: "2.0"

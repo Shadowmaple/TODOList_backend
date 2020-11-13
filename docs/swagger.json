@@ -1,0 +1,407 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "todo-list",
+        "contact": {},
+        "license": {},
+        "version": "1.0"
+    },
+    "host": "...",
+    "basePath": "/api/v1",
+    "paths": {
+        "/matter": {
+            "get": {
+                "tags": [
+                    "matter"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/matter.ListResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "matter"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/matter.CreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/matter/{id}": {
+            "get": {
+                "tags": [
+                    "matter"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "matter id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/matter.GetResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "matter"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "matter id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/matter.UpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "matter"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "matter id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/matter/{id}/finish": {
+            "put": {
+                "tags": [
+                    "matter"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "matter id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/matter.FinishPayload"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/matter.FinishPayload"
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.GetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "parameters": [
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/user.LoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.LoginResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "matter.CreateRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "date": {
+                    "description": "设定的日期：2020-11-01",
+                    "type": "string"
+                },
+                "priority": {
+                    "description": "优先级，0/1/2/3 =\u003e 无优先级/低优先级/中优先级/高优先级",
+                    "type": "integer"
+                },
+                "time": {
+                    "description": "设定的时间：\"12:02\"",
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "matter.FinishPayload": {
+            "type": "object",
+            "properties": {
+                "state": {
+                    "description": "是否完成",
+                    "type": "boolean"
+                }
+            }
+        },
+        "matter.GetResponse": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "date": {
+                    "description": "设定的日期：2020-11-01",
+                    "type": "string"
+                },
+                "priority": {
+                    "description": "优先级，0/1/2/3 =\u003e 无优先级/低优先级/中优先级/高优先级",
+                    "type": "integer"
+                },
+                "time": {
+                    "description": "设定的时间：\"12:02\"",
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "matter.ListResponse": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer"
+                },
+                "list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/matter.MatterInfo"
+                    }
+                }
+            }
+        },
+        "matter.MatterInfo": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "date": {
+                    "description": "设定的日期：2020-11-01",
+                    "type": "string"
+                },
+                "priority": {
+                    "description": "优先级，0/1/2/3 =\u003e 无优先级/低优先级/中优先级/高优先级",
+                    "type": "integer"
+                },
+                "time": {
+                    "description": "设定的时间：\"12:02\"",
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "matter.UpdateRequest": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "date": {
+                    "description": "设定的日期：2020-11-01",
+                    "type": "string"
+                },
+                "priority": {
+                    "description": "优先级，0/1/2/3 =\u003e 无优先级/低优先级/中优先级/高优先级",
+                    "type": "integer"
+                },
+                "time": {
+                    "description": "设定的时间：\"12:02\"",
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.GetResponse": {
+            "type": "object",
+            "properties": {
+                "nickname": {
+                    "type": "string"
+                },
+                "qq": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.LoginRequest": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "小程序 auth code",
+                    "type": "string"
+                }
+            }
+        },
+        "user.LoginResponse": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.UpdateRequest": {
+            "type": "object",
+            "properties": {
+                "nickname": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
