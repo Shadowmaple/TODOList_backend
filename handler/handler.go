@@ -2,7 +2,6 @@ package handler
 
 import (
 	"net/http"
-
 	"todolist_backend/log"
 	"todolist_backend/util"
 
