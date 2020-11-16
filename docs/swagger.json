@@ -207,7 +207,7 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "获取用户信息",
+                "summary": "修改用户信息",
                 "parameters": [
                     {
                         "type": "string",
@@ -215,14 +215,21 @@
                         "name": "Authorization",
                         "in": "header",
                         "required": true
+                    },
+                    {
+                        "description": "body data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/user.UpdateRequest"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/user.GetResponse"
-                        }
+                        "description": "OK"
                     }
                 }
             }
@@ -394,9 +401,6 @@
                 "nickname": {
                     "type": "string"
                 },
-                "qq": {
-                    "type": "string"
-                },
                 "username": {
                     "type": "string"
                 }
@@ -414,6 +418,10 @@
         "user.LoginResponse": {
             "type": "object",
             "properties": {
+                "is_new": {
+                    "description": "是否是新用户",
+                    "type": "boolean"
+                },
                 "token": {
                     "type": "string"
                 }

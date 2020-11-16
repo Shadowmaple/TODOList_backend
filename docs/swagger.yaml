@@ -95,8 +95,6 @@ definitions:
     properties:
       nickname:
         type: string
-      qq:
-        type: string
       username:
         type: string
     type: object
@@ -108,6 +106,9 @@ definitions:
     type: object
   user.LoginResponse:
     properties:
+      is_new:
+        description: 是否是新用户
+        type: boolean
       token:
         type: string
     type: object
@@ -259,12 +260,17 @@ paths:
         name: Authorization
         required: true
         type: string
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/user.UpdateRequest'
+          type: object
       responses:
         "200":
           description: OK
-          schema:
-            $ref: '#/definitions/user.GetResponse'
-      summary: 获取用户信息
+      summary: 修改用户信息
       tags:
       - user
   /user/login:
