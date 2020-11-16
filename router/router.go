@@ -30,12 +30,14 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	g.POST("/api/v1/login", user.Login)
 
 	u := g.Group("/api/v1/user")
+	u.Use(middleware.AuthMiddleware())
 	{
 		u.GET("", user.Get)
 		u.PUT("", user.Update)
 	}
 
 	matterRouter := g.Group("api/v1/matter")
+	matterRouter.Use(middleware.AuthMiddleware())
 	{
 		matterRouter.POST("", matter.Create)
 		matterRouter.GET("", matter.List)

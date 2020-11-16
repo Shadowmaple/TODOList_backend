@@ -27,3 +27,7 @@ func GetTokenExpiredTime() time.Duration {
 	day := viper.GetInt("jwt.expired")
 	return time.Hour * 24 * time.Duration(day)
 }
+
+func GetAppIDAndAppSecret() (string, string) {
+	return viper.GetString("qq.app_id"), viper.GetString("qq.app_secret")
+}
