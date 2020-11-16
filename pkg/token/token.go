@@ -13,7 +13,9 @@ var (
 
 // Context is the context of the JSON web token.
 type Context struct {
-	ID uint32
+	ID           uint32
+	QQOpenID     string // QQ 用户唯一标识符
+	QQSessionKey string
 }
 
 // ParseRequest gets the token from the header and
@@ -31,7 +33,9 @@ func ParseRequest(c *gin.Context) (*Context, error) {
 	}
 
 	ctx := &Context{
-		ID: payload.ID,
+		ID:           payload.ID,
+		QQOpenID:     payload.QQOpenID,
+		QQSessionKey: payload.QQSessionKey,
 	}
 
 	return ctx, nil

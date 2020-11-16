@@ -29,20 +29,26 @@ func getJwtKey() string {
 
 // TokenPayload is a required payload when generates token.
 type TokenPayload struct {
-	ID      uint32        `json:"id"`
-	Expired time.Duration `json:"expired"` // 有效时间
+	ID           uint32        `json:"id"`
+	QQOpenID     string        `json:"qq_open_id"` // QQ 用户唯一标识符
+	QQSessionKey string        `json:"qq_session_key"`
+	Expired      time.Duration `json:"expired"` // 有效时间
 }
 
 // TokenResolve means returned payload when resolves token.
 type TokenResolve struct {
-	ID uint32 `json:"id"`
+	ID           uint32 `json:"id"`
+	QQOpenID     string `json:"qq_open_id"` // QQ 用户唯一标识符
+	QQSessionKey string `json:"qq_session_key"`
 }
 
 // GenerateToken generates token.
 func GenerateToken(payload *TokenPayload) (string, error) {
 	claims := &TokenClaims{
-		ID:        payload.ID,
-		ExpiresAt: time.Now().Unix() + int64(payload.Expired.Seconds()),
+		ID:           payload.ID,
+		QQOpenID:     payload.QQOpenID,
+		QQSessionKey: payload.QQSessionKey,
+		ExpiresAt:    time.Now().Unix() + int64(payload.Expired.Seconds()),
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
@@ -70,7 +76,9 @@ func ResolveToken(tokenStr string) (*TokenResolve, error) {
 	}
 
 	t := &TokenResolve{
-		ID: claims.ID,
+		ID:           claims.ID,
+		QQOpenID:     claims.QQOpenID,
+		QQSessionKey: claims.QQSessionKey,
 	}
 	return t, nil
 }

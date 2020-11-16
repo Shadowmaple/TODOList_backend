@@ -6,8 +6,10 @@ import (
 
 // TokenClaims means a claim segment in a JWT.
 type TokenClaims struct {
-	ID        uint32 `json:"id"`
-	ExpiresAt int64  `json:"expires_at"` // 过期时间（时间戳，10位）
+	ID           uint32 `json:"id"`
+	QQOpenID     string `json:"qq_open_id"` // QQ 用户唯一标识符
+	QQSessionKey string `json:"qq_session_key"`
+	ExpiresAt    int64  `json:"expires_at"` // 过期时间（时间戳，10位）
 }
 
 // Valid checks whether the token is valid.

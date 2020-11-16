@@ -19,6 +19,8 @@ func AuthMiddleware() gin.HandlerFunc {
 		}
 
 		c.Set("userID", ctx.ID)
+		c.Set("openID", ctx.QQOpenID)
+		c.Set("sessionKey", ctx.QQSessionKey)
 
 		c.Next()
 	}
