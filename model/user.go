@@ -4,7 +4,7 @@ type UserModel struct {
 	ID       uint32 `json:"id" gorm:"column:id"`
 	Username string `json:"username" gorm:"column:username"`
 	Nickname string `json:"nickname" gorm:"column:nickname"`
-	QQ       string `json:"qq" gorm:"column:qq"`
+	QQ       string `json:"qq" gorm:"column:qq"` // QQ 的用户唯一标识符，使用的是 QQ 的 openID
 }
 
 func (c *UserModel) TableName() string {
@@ -31,6 +31,13 @@ func DeleteUser(id uint32) error {
 func GetUserById(id uint32) (*UserModel, error) {
 	u := &UserModel{}
 	d := DB.Self.Where("id = ?", id).First(&u)
+	return u, d.Error
+}
+
+// GetUser gets an user by the user identifier.
+func GetUserByQQ(qq string) (*UserModel, error) {
+	u := &UserModel{}
+	d := DB.Self.Where("qq = ?", qq).First(&u)
 	return u, d.Error
 }
 
