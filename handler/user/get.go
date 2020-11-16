@@ -11,7 +11,7 @@ import (
 type GetResponse struct {
 	Username string `json:"username"`
 	Nickname string `json:"nickname"`
-	QQ       string `json:"qq"`
+	// QQ       string `json:"qq"`
 }
 
 // Get gets an user by the user identifier.
@@ -32,6 +32,6 @@ func Get(c *gin.Context) {
 	handler.SendResponse(c, nil, GetResponse{
 		Username: user.Username,
 		Nickname: user.Nickname,
-		QQ:       user.QQ,
+		// QQ:       user.QQ,
 	})
 }

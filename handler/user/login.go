@@ -44,8 +44,8 @@ func Login(c *gin.Context) {
 	var isNew = false
 	user, err := model.GetUserByQQ(openID)
 	if err == gorm.ErrRecordNotFound {
-		// 注册新用户
-		user, err = Register(request.Code, openID, sessionKey)
+		// 创建新用户
+		user, err = service.CreateNewAccount(openID)
 		if err != nil {
 			handler.SendError(c, errno.ErrDatabase, nil, err.Error())
 			return
@@ -71,19 +71,4 @@ func Login(c *gin.Context) {
 		Token: token,
 		IsNew: isNew,
 	})
-}
-
-func Register(code, openID, sessionKey string) (*model.UserModel, error) {
-	// 从 QQ 获取用户信息，昵称
-
-	user := &model.UserModel{
-		Username: "",
-		Nickname: "",
-		QQ:       openID,
-	}
-	if err := user.Create(); err != nil {
-		return nil, err
-	}
-
-	return nil, nil
 }
