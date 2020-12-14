@@ -51,8 +51,6 @@ func main() {
 	router.Load(
 		g,
 
-		// MiddleWares.
-		// middleware.Logging(),
 		gin.Logger(),
 		middleware.RequestId(),
 	)
