@@ -124,6 +124,24 @@ info:
   title: todo-list
   version: "1.0"
 paths:
+  /login:
+    post:
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/user.LoginRequest'
+          type: object
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.LoginResponse'
+      summary: 登录
+      tags:
+      - user
   /matter:
     get:
       parameters:
@@ -260,35 +278,12 @@ paths:
         name: Authorization
         required: true
         type: string
-      - description: body data
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/user.UpdateRequest'
-          type: object
-      responses:
-        "200":
-          description: OK
-      summary: 修改用户信息
-      tags:
-      - user
-  /user/login:
-    post:
-      parameters:
-      - description: body data
-        in: body
-        name: data
-        required: true
-        schema:
-          $ref: '#/definitions/user.LoginRequest'
-          type: object
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/user.LoginResponse'
-      summary: 登录
+            $ref: '#/definitions/user.GetResponse'
+      summary: 获取用户信息
       tags:
       - user
 swagger: "2.0"
