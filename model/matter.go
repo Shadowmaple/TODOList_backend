@@ -39,6 +39,6 @@ func GetMatterByID(id uint32) (*MatterModel, error) {
 
 func ListMatters(userID uint32) ([]*MatterModel, error) {
 	var list []*MatterModel
-	d := DB.Self.Where("user_id", userID).Find(&list)
+	d := DB.Self.Where("user_id = ?", userID).Find(&list)
 	return list, d.Error
 }
