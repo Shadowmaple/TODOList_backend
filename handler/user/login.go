@@ -24,7 +24,7 @@ type LoginResponse struct {
 // @Tags user
 // @Param data body user.LoginRequest true "body data"
 // @Success 200 {object} user.LoginResponse
-// @Router /user/login [post]
+// @Router /login [post]
 func Login(c *gin.Context) {
 	request := LoginRequest{}
 	if err := c.BindJSON(&request); err != nil {
