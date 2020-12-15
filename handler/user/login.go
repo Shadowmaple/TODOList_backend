@@ -6,6 +6,7 @@ import (
 	"todolist_backend/pkg/errno"
 	"todolist_backend/pkg/token"
 	"todolist_backend/service"
+	"todolist_backend/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
@@ -35,7 +36,7 @@ func Login(c *gin.Context) {
 	// 根据 code 从 QQ 获取 openID 和 sessionKey
 	openID, sessionKey, err := service.CodeToSession(request.Code)
 	if err != nil {
-		handler.SendResponse(c, err, nil)
+		handler.SendResponse(c, err, "登录失败")
 		return
 	}
 
@@ -61,6 +62,7 @@ func Login(c *gin.Context) {
 		ID:           user.ID,
 		QQOpenID:     openID,
 		QQSessionKey: sessionKey,
+		Expired:      util.GetTokenExpiredTime(),
 	})
 	if err != nil {
 		handler.SendError(c, errno.ErrToken, nil, err.Error())
