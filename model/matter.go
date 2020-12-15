@@ -14,6 +14,10 @@ type MatterModel struct {
 	UserID    uint32    `json:"user_id" gorm:"column:user_id"`
 }
 
+func (*MatterModel) TableName() string {
+	return "matter"
+}
+
 func (m *MatterModel) Create() error {
 	return DB.Self.Create(m).Error
 }

@@ -7,7 +7,7 @@ type UserModel struct {
 	QQ       string `json:"qq" gorm:"column:qq"` // QQ 的用户唯一标识符，使用的是 QQ 的 openID
 }
 
-func (c *UserModel) TableName() string {
+func (*UserModel) TableName() string {
 	return "user"
 }
 
