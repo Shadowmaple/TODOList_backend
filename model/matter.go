@@ -27,8 +27,7 @@ func (m *MatterModel) Update() error {
 }
 
 func DeleteMatter(id uint32) error {
-	matter := &MatterModel{ID: id}
-	return DB.Self.Delete(matter).Error
+	return DB.Self.Where("id = ?", id).Delete(MatterModel{}).Error
 }
 
 func GetMatterByID(id uint32) (*MatterModel, error) {
