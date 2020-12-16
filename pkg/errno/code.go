@@ -18,4 +18,7 @@ var (
 	ErrUserNotFound      = &Errno{Code: 20102, Message: "The user was not found."}
 	ErrTokenInvalid      = &Errno{Code: 20103, Message: "The token was invalid."}
 	ErrPasswordIncorrect = &Errno{Code: 20104, Message: "The password was incorrect."}
+
+	// matter errors
+	ErrMatterNotExists = &Errno{Code: 20201, Message: "The matter is not existed."}
 )

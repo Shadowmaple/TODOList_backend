@@ -30,6 +30,7 @@ func List(c *gin.Context) {
 	list := make([]*MatterInfo, 0)
 	for _, matter := range matters {
 		list = append(list, &MatterInfo{
+			ID:       matter.ID,
 			Title:    matter.Title,
 			Content:  matter.Content,
 			Priority: matter.Priority,

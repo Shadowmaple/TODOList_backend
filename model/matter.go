@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 type MatterModel struct {
 	ID        uint32    `json:"id" gorm:"column:id"`
@@ -40,4 +42,10 @@ func ListMatters(userID uint32) ([]*MatterModel, error) {
 	var list []*MatterModel
 	d := DB.Self.Where("user_id = ?", userID).Find(&list)
 	return list, d.Error
+}
+
+func MatterIsExisted(id uint32) (bool, error) {
+	count := 0
+	d := DB.Self.Table("matter").Where("id = ?", id).Count(&count)
+	return count != 0, d.Error
 }

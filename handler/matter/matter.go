@@ -1,6 +1,7 @@
 package matter
 
 type MatterInfo struct {
+	ID       uint32 `json:"id"`
 	Title    string `json:"title"`
 	Content  string `json:"content"`
 	Priority int8   `json:"priority"` // 优先级，0/1/2/3 => 无优先级/低优先级/中优先级/高优先级
