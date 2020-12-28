@@ -36,6 +36,7 @@ func Create(c *gin.Context) {
 		Time:     request.Time,
 		UserID:   userID,
 	}
+
 	if err := matter.Create(); err != nil {
 		handler.SendError(c, errno.ErrDatabase, nil, err.Error())
 		return
